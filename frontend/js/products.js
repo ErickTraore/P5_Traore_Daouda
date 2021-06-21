@@ -1,9 +1,12 @@
-﻿function getOneProducts() {
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search.slice(1));
-    params.append('foo', 4);
-    let id = location.search.substring(4);
-    let test = params.get("foo");
+﻿let url = new URL(window.location.href);
+let params = new URLSearchParams(url.search.slice(1));
+params.append('foo', 4);
+// console.log(params);
+
+let id = location.search.substring(4);
+let test = params.get("foo");
+
+function getOneProducts() {
     let apiurl = "http://localhost:3000/api/cameras/" + id;
 
     var p = document.getElementById("output");
@@ -39,10 +42,14 @@
             let insert1 = document.getElementById("output");
             crea1 = document.createElement("div");
             insert1.appendChild(crea1);
+            crea1.setAttribute("type", "text");
             crea1.setAttribute("class", "output__select");
             crea1.setAttribute("id", "crea1");
+            crea1.setAttribute("onchange", "selectFunction()");
+            crea1.setAttribute("name", "selectFunction()");
             crea1.innerHTML = "<p>Choisissez un objectif </p>";
             valid_top = true;
+
             for (var i = 0; i < data.lenses.length; i++) {
                 insert2 = document.getElementById("crea1");
                 crea2 = document.createElement("input");
@@ -62,11 +69,22 @@
                 crea2.setAttribute("name", "choix");
                 crea2.setAttribute("value", data.lenses[i]);
                 crea2.setAttribute("id", "choix" + [i]);
-                var valeur = document.querySelector(
-                    'input[name="choix"]:checked'
-                ).value;
-                console.log(valeur);
+
+                // function selectFunction(val) {
+                //     alert("The input value has changed. The new value is: " + val);
+                // }
+                // function selectFunction() {
+                //     var x = document.getElementById("crea1").value;
+                //     // document.getElementById("demo").innerHTML =
+                //     //     "You selected: " + x;
+                //     console.log("x");
+                // }
+                // const valeur = document.querySelector(
+                //     'input[name="choix"]:checked'
+                // ).value;
+                // console.log(valeur);
             }
+
             /////////////
             insert1 = document.getElementById("output");
             crea4 = document.createElement("div");
@@ -94,4 +112,6 @@
         // Une erreur est survenue
     });
 }
+
+
 getOneProducts();
