@@ -16,7 +16,10 @@ crea1.setAttribute("class", "articles");
 
 function getAllProducts() {
     fetch("http://localhost:3000/api/cameras/")
-
+        // let url = new URL(window.location.href);
+        // let params = new URLSearchParams(url.search.slice(1));
+        // let id = location.search;
+        // console.log(params);
 
     .then((reponse) => reponse.json())
         .then((data) => {
@@ -43,11 +46,15 @@ function getAllProducts() {
                 let id = location.search;
                 console.log(params);
 
+                // console.log(id);
+
+                // params.set(data[i], id);
+                // const par = params.get(data[i]);
+                // console.log("par");
+
                 var e = document.createElement("a");
                 e.classList.add("articles__article");
-                URL: https: pageProduct.html
-                const params = new URLSearchParams(location.search);
-                params.set("id", data[i]._id);
+                e.href = "pageProduct.html?id=" + data[i]._id;
                 e.innerHTML = " Détails du produit";
                 p.appendChild(e);
             }

@@ -1,12 +1,10 @@
-﻿let url = new URL(window.location.href);
-let params = new URLSearchParams(url.search.slice(1));
-params.append('foo', 4);
-// console.log(params);
+﻿function getOneProducts() {
+    let url = new URL(window.location.href);
+    let params = new URLSearchParams(url.search.slice(1));
+    params.append('foo', 4);
 
-let id = location.search.substring(4);
-let test = params.get("foo");
-
-function getOneProducts() {
+    let id = location.search.substring(4);
+    let test = params.get("foo");
     let apiurl = "http://localhost:3000/api/cameras/" + id;
 
     var p = document.getElementById("output");
@@ -50,6 +48,7 @@ function getOneProducts() {
             crea1.innerHTML = "<p>Choisissez un objectif </p>";
             valid_top = true;
 
+
             for (var i = 0; i < data.lenses.length; i++) {
                 insert2 = document.getElementById("crea1");
                 crea2 = document.createElement("input");
@@ -83,6 +82,7 @@ function getOneProducts() {
                 //     'input[name="choix"]:checked'
                 // ).value;
                 // console.log(valeur);
+
             }
 
             /////////////
