@@ -39,16 +39,13 @@
             p.appendChild(e);
 
             let inserx0 = document.getElementById("output");
-            creax0 = document.createElement("form");
+            let creax0 = document.createElement("form");
             inserx0.appendChild(creax0);
-            creax0.setAttribute("name", "form1");
-            creax0.setAttribute("method", "get");
-            creax0.setAttribute("action", "panier.html");
+            creax0.setAttribute("name", "form2");
 
             crea1 = document.createElement("div");
             creax0.appendChild(crea1);
             crea1.setAttribute("type", "text");
-
             crea1.setAttribute("class", "output__select");
             crea1.setAttribute("id", "crea1");
             crea1.setAttribute("onchange", "selectFunction()");
@@ -76,42 +73,40 @@
                 crea2.setAttribute("value", data.lenses[i]);
                 crea2.setAttribute("id", "choix" + [i]);
             }
-            // let inserx = document.getElementById("output");
-            // let creax = document.createElement("form");
-            // inserx.appendChild(creax);
-            // creax.setAttribute("name", "form2");
+            let inserx = document.getElementById("output");
+            let creax = document.createElement("form");
+            inserx.appendChild(creax);
+            creax.setAttribute("name", "form1");
             /////////////
-            // insert1 = document.getElementById("output");
-            // crea4 = document.createElement("div");
-            crea6 = document.createElement("label");
+            crea4 = document.createElement("div");
             crea5 = document.createElement("input");
-            // creax0.appendChild(crea4);
-            creax0.appendChild(crea5);
-            insert2.appendChild(crea6);
-            // crea4.innerHTML = "Choisir la quantité";
-            crea6.setAttribute("for", "qte");
-            crea6.innerHTML = "Choisissez une quantité";
-
-            // crea4.setAttribute("class", "output__select");
+            creax.appendChild(crea4);
+            creax.appendChild(crea5);
+            crea4.innerHTML = "Choisir la quantité";
+            crea4.setAttribute("class", "output__select");
 
             crea5.setAttribute("type", "text");
-            crea5.setAttribute("name", "qte");
-            crea5.setAttribute("placeholder", "Entrez la quantité");
-            crea7 = document.createElement("input");
-            creax0.appendChild(crea7);
-            crea7.setAttribute("type", "submit");
-            crea7.setAttribute("name", "submit");
-            crea7.setAttribute("value", "Ajoutez au panier");
-            // crea7.innerHTML =
-            //     '<i class = "fas fa-shopping-cart"> </i> Ajoutez au panier';
-            //////////////////////////////////////////
+            crea5.setAttribute("name", "input");
+            crea5.setAttribute("value", "");
+            crea5.setAttribute("placeholder", "1");
+            document.getElementById("crea5").focus();
 
+            // let inserx1 = document.getElementById("output");
+            // let creax1 = document.createElement("div");
+            // inserx1.appendChild(creax1);
+
+            // var p = document.getElementById("output");
             // var e = document.createElement("a");
-            // e.classList.add("articles__article");
-            // e.setAttribute("id", "out");
-            // e.href = "panier.html?id=" + data._id + "&price" + " = " + data.price;
-            // e.innerHTML = '<i class = "fas fa-shopping-cart"> </i> Ajoutez au panier';
             // p.appendChild(e);
+
+            //////////////////////////////////////////
+            var inserx1 = document.getElementById("output");
+            var e = document.createElement("a");
+            inserx1.appendChild(e);
+            e.classList.add("articles__article");
+            e.setAttribute("id", "out");
+            e.href = "panier.html?id=" + data._id + "&price" + " = " + data.price;
+            e.innerHTML = '<i class = "fas fa-shopping-cart"> </i> Ajoutez au panier';
         })
 
     .catch(function(err) {
