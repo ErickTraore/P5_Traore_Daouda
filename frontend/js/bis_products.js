@@ -16,6 +16,7 @@ function getOneProducts() {
     infoId = params.get("pdtId");
     let apiurl = "http://localhost:3000/api/cameras/" + params.get("pdtId");
     var p = document.getElementById("output");
+    // alert(apiurl);
     fetch(apiurl)
         .then(function(res) {
             if (res.ok) {
@@ -45,6 +46,7 @@ function getOneProducts() {
                 "Model:" + " " + data.name + " <br> " + "Prix:" + " " + data.price;
             p.appendChild(e);
 
+            // let inserx0 = document.getElementById("output");
             var creax0 = document.createElement("p");
             p.appendChild(creax0);
             creax0.innerHTML = "Choisissez une option lentille";
@@ -53,67 +55,49 @@ function getOneProducts() {
             p.appendChild(creax1);
             creax1.setAttribute("id", "myObjectif");
             creax1.setAttribute("placeholder", "myObjectif");
+            // creax1.setAttribute("onchange", "firstFunction()");
             for (var i = 0; i < data.lenses.length; i++) {
                 var creax2 = document.createElement("option");
                 creax1.appendChild(creax2);
+                // creax2.setAttribute("value", i);
                 creax2.innerHTML = "Objectif:" + " " + data.lenses[i];
             }
+
+            // var creax1 = document.createElement("select");
+            // p.appendChild(creax1);
+            // creax1.setAttribute("id", "myObjectif");
+            // creax1.setAttribute("placeholder", "myObjectif");
+            // // creax1.setAttribute("onchange", "firstFunction()");
+            // for (var i = 0; i < data.lenses.length; i++) {
+            //     var creax2 = document.createElement("option");
+            //     creax1.appendChild(creax2);
+            //     // creax2.setAttribute("value", i);
+            //     creax2.innerHTML = "Objectif:" + " " + data.lenses[i];
+            // }
 
             crea5 = document.createElement("p");
             p.appendChild(crea5);
             crea5.setAttribute("for", "qte");
             crea5.innerHTML = "Choisissez une quantité";
-            //modif inserez quantité
-            crea6 = document.createElement("form");
+
+            crea6 = document.createElement("input");
             p.appendChild(crea6);
-            crea6.setAttribute("class", "divQte");
 
-            crea61 = document.createElement("input");
-            crea6.appendChild(crea61);
-            crea61.setAttribute("id", "moins");
-            crea61.setAttribute("type", "moins");
-            crea61.setAttribute("value", "-");
-
-            crea62 = document.createElement("input");
-            crea6.appendChild(crea62);
-            crea62.setAttribute("id", "result");
-            crea62.setAttribute("type", "number");
-            crea62.setAttribute("value", "1");
-
-            crea63 = document.createElement("input");
-            crea6.appendChild(crea63);
-            crea63.setAttribute("id", "plus");
-            crea63.setAttribute("type", "button");
-            crea63.setAttribute("value", "+");
-
-            let res = document.getElementById("result");
-            result = parseInt(res.value, 10);
-            let plus = document.getElementById("plus");
-            let moins = document.getElementById("moins");
-
-            plus.addEventListener("click", function() {
-                if (result >= 1 && result < 99) {
-                    result++;
-                    document.getElementById("result").value = result;
-                }
-            });
-            moins.addEventListener("click", function() {
-                if (result > 1 && result <= 99) {
-                    result--;
-                    document.getElementById("result").value = result;
-                }
-            });
-
-            //fin modif inserez quantité
+            crea6.setAttribute("type", "text");
+            crea6.setAttribute("name", "qte");
+            crea6.setAttribute("placeholder", "Entrez la quantité");
 
             crea7 = document.createElement("button");
             p.appendChild(crea7);
+            crea6.setAttribute("id", "btn");
 
             crea7.setAttribute("id", "boutonProduct");
             crea7.innerHTML = "Ajoutez au panier";
+            // const s = getElementById("demo");
             crea8 = document.createElement("div");
             p.appendChild(crea8);
             crea8.setAttribute("id", "erreur");
+            // err = "Je suis un Yankee";
 
             const btn = document.querySelector("#myObjectif");
             btn.onclick = (event) => {
@@ -121,19 +105,17 @@ function getOneProducts() {
             };
 
             boutonProduct.onclick = () => {
-                if (crea62.value == "" || btn.value == "") {
+                if (crea6.value == "" || btn.value == "") {
                     document.getElementById("erreur").innerHTML =
                         "Choisissez obligatoirement une quantité et un objectif";
                 } else {
                     var sous_total;
                     const product = {
                         nom: data.name,
-                        qte: crea62.value,
+                        qte: crea6.value,
                         prix_unit: data.price / 100 + "" + "€",
                         lentille: btn.value,
-                        sous_total: crea62.value * (data.price / 100),
-                        // sous_total: (crea6.value =
-                        //     crea6.value * (data.price / 100)),
+                        sous_total: (crea6.value = crea6.value * (data.price / 100)),
                         // urlImage: data.imageUrl,
                         // id: data._id,
                         // description: data.description,
