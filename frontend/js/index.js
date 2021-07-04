@@ -25,21 +25,17 @@ function getAllProducts() {
                 img.classList.add("articles__image");
                 p.appendChild(img);
 
-                var e = document.createElement("div");
-                e.classList.add("articles__article");
-                e.innerHTML = "Model:" + " " + data[i].name;
-                p.appendChild(e);
-
-                var e = document.createElement("div");
-                e.classList.add("articles__article");
-                e.innerHTML =
-                    "Prix :" + " " + "<span>" + data[i].price + "." + "</span>";
-                p.appendChild(e);
-
                 var e = document.createElement("a");
-                e.classList.add("articles__article");
                 e.href = "pageProduct.html?id=" + data[i]._id;
-                e.innerHTML = " Détails du produit";
+                e.innerHTML =
+                    "Model:" +
+                    " " +
+                    data[i].name +
+                    "<br/>" +
+                    "Prix:" + " " +
+                    data[i].price / 100 + " " + "€" +
+                    "<br/>" +
+                    "Détails du produit";
                 p.appendChild(e);
             }
             // .catch(function(err) {

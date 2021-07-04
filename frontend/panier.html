@@ -10,9 +10,12 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
     <script defer src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <script defer src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 </head>
 
-<body>
+<body id="orinoco">
 
 
     <div class="logo">
@@ -24,10 +27,38 @@
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+
             <i class="fa fa-bars"></i>
         </a>
     </div>
-    <script type="text/javascipt" src="js/panier.js"></script>
+    <h2 id="h2">Panier d'achat</h2>
+    <!-- <table id="table">
+        <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+        </thead>
+    </table> -->
+
+    <h3 id="cde">Je m'identifie</h3>
+    <p>Les champs avec * sont obligatoires</p>
+    <form name="formulaire" method="post" onSubmit="return verif_formulaire()">
+        <pre>
+
+            <label for="nom">Nom: </label>    <input type="text" size="40" name="nom">
+            <label for="mot_de_passe">Mot de Passe: </label> <input type="text" size="40" name="mot_de_passe"> 
+            <label for="age">Âge:</label>    <input type="text" size="40" name="age">
+
+            Je commande: <input type="submit" id="inputenvoyer"value="Envoyer"><input type="reset" value="Tout enlever">
+
+            Pour envoyer vous devez être connecté à Internet!
+            </pre>
+    </form>
+
+    <script type="text/javascript" src="js/panier.js">
+    </script>
 </body>
 
 </html>
