@@ -42,7 +42,13 @@ function getOneProducts() {
             var e = document.createElement("div");
             e.classList.add("output__select");
             e.innerHTML =
-                "Model:" + " " + data.name + " <br> " + "Prix:" + " " + data.price;
+                "Model:" +
+                " " +
+                data.name +
+                " <br> " +
+                "Prix:" +
+                " " +
+                data.price / 100;
             p.appendChild(e);
 
             var creax0 = document.createElement("p");
@@ -52,6 +58,7 @@ function getOneProducts() {
             var creax1 = document.createElement("select");
             p.appendChild(creax1);
             creax1.setAttribute("id", "myObjectif");
+            creax1.setAttribute("class", "output__myObjectif");
             creax1.setAttribute("placeholder", "myObjectif");
             for (var i = 0; i < data.lenses.length; i++) {
                 var creax2 = document.createElement("option");
@@ -66,25 +73,28 @@ function getOneProducts() {
             //modif inserez quantité
             crea6 = document.createElement("form");
             p.appendChild(crea6);
-            crea6.setAttribute("class", "divQte");
+            crea6.setAttribute("class", "output__divQte");
 
             crea61 = document.createElement("input");
             crea6.appendChild(crea61);
             crea61.setAttribute("id", "moins");
-            crea61.setAttribute("type", "moins");
+            crea61.setAttribute("type", "button");
             crea61.setAttribute("value", "-");
+            crea61.setAttribute("class", "output__divQte__qte");
 
             crea62 = document.createElement("input");
             crea6.appendChild(crea62);
             crea62.setAttribute("id", "result");
             crea62.setAttribute("type", "number");
             crea62.setAttribute("value", "1");
+            crea62.setAttribute("class", "output__divQte__qte");
 
             crea63 = document.createElement("input");
             crea6.appendChild(crea63);
             crea63.setAttribute("id", "plus");
             crea63.setAttribute("type", "button");
             crea63.setAttribute("value", "+");
+            crea63.setAttribute("class", "output__divQte__qte");
 
             let res = document.getElementById("result");
             result = parseInt(res.value, 10);
@@ -109,6 +119,7 @@ function getOneProducts() {
             crea7 = document.createElement("button");
             p.appendChild(crea7);
 
+            crea7.setAttribute("class", "output__divQte__btn");
             crea7.setAttribute("id", "boutonProduct");
             crea7.innerHTML = "Ajoutez au panier";
             crea8 = document.createElement("div");
