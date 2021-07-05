@@ -69,12 +69,11 @@ for (i = 0; i < data.length; i++) {
     e.addEventListener("click", function() {
         alert("ok");
         // here you need to make a loop to find the index of item to delete
-        var indexToRemove = parseInt(data[i]);
+        var indexToRemove = data[i];
         alert(indexToRemove);
         //remove item selected, second parameter is the number of items to delete
         data.splice(indexToRemove, 5);
         console.log(data);
-
         // Put the object into storage
         // localStorage.setItem("keyName", JSON.stringify(storedNames));
         localStorage.setItem("panier", JSON.stringify(data));
