@@ -252,17 +252,23 @@ td {
     flex-wrap: nowrap; }
 
 .viewver {
-  width: auto;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0px 0px;
+  padding: 5px 5px 5px 5px;
+  font-size: 13px;
   border: 3px solid red; }
-  .viewver .carding {
-    width: 100% !important;
-    height: auto;
-    padding: 10px;
-    border: 3px solid #4d15e9; }
-    .viewver .carding .img {
-      width: 20%; }
+  .viewver__img {
+    width: 30%;
+    align-self: center;
+    padding: 5px 5px; }
+  .viewver__name {
+    width: 10%;
+    align-self: center;
+    padding: 5px 5px; }
 
 /*# sourceMappingURL=style.css.map */

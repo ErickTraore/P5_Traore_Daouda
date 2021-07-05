@@ -145,7 +145,7 @@ function getOneProducts() {
                         sous_total: crea62.value * (data.price / 100),
                         // sous_total: (crea6.value =
                         //     crea6.value * (data.price / 100)),
-                        // urlImage: data.imageUrl,
+                        imgSrc: data.imageUrl,
                         // id: data._id,
                         // description: data.description,
                     };
