@@ -56,11 +56,19 @@ for (i = 0; i < data.length; i++) {
     p.appendChild(e);
     e.setAttribute("class", "viewver__panier2");
 
-    var e = document.createElement("div");
-    // e.innerHTML = "N°" + " " + i;
-    e.innerHTML = i;
-    p.appendChild(e);
-    e.setAttribute("class", "viewver__num");
+    var es = document.createElement("input");
+    let insert = i;
+    p.appendChild(es);
+    es.setAttribute("class", "viewver__num");
+    es.setAttribute("id", "num");
+    // es.setAttribute("type", "numeric");
+    es.setAttribute("value", insert);
+
+    var es = document.createElement("div");
+    es.innerHTML = i;
+    p.appendChild(es);
+    es.setAttribute("class", "viewver__hide");
+    es.setAttribute("id", "hide");
 
     var e = document.createElement("div");
     e.innerHTML = "Suprimer";
@@ -68,16 +76,15 @@ for (i = 0; i < data.length; i++) {
     e.setAttribute("class", "viewver__suprimer");
     e.addEventListener("click", function() {
         alert("ok");
-        // here you need to make a loop to find the index of item to delete
-        var indexToRemove = data[i];
-        alert(indexToRemove);
-        //remove item selected, second parameter is the number of items to delete
-        data.splice(indexToRemove, 5);
-        console.log(data);
-        // Put the object into storage
-        // localStorage.setItem("keyName", JSON.stringify(storedNames));
-        localStorage.setItem("panier", JSON.stringify(data));
-        // console.log(data);
+        alert(i);
+
+        let testnum = document.getElementById("num").value;
+        alert(testnumgit status);
+
+        // let testhide = document.getElementById("hide");
+        // testhide.innerText = `${testnum}`;
+        // alert(testhide);
+        console.log(testnum);
     });
 
     var e = document.createElement("div");
