@@ -258,17 +258,81 @@ td {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 0px 0px;
   padding: 5px 5px 5px 5px;
-  font-size: 13px;
-  border: 3px solid red; }
-  .viewver__img {
-    width: 30%;
-    align-self: center;
-    padding: 5px 5px; }
-  .viewver__name {
-    width: 10%;
-    align-self: center;
-    padding: 5px 5px; }
+  font-size: 13px; }
+  .viewver__case {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 15px;
+    border: 2px solid #4f61c9; }
+    .viewver__case__caseTexteGauche {
+      width: 30%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+      .viewver__case__caseTexteGauche__img {
+        width: 100%;
+        height: 75%;
+        display: flex;
+        justify-content: center;
+        padding: 5px 5px; }
+      .viewver__case__caseTexteGauche__ecrease {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        align-items: center;
+        background-color: #e2b0b0; }
+    .viewver__case__caseTexteDroit {
+      width: 70%;
+      height: auto;
+      display: flex;
+      flex-direction: column; }
+      .viewver__case__caseTexteDroit__sup {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around; }
+        .viewver__case__caseTexteDroit__sup__nom {
+          width: auto;
+          height: auto;
+          display: flex;
+          justify-content: center;
+          align-self: center;
+          font-size: large;
+          color: blue;
+          padding: 5px 5px; }
+        .viewver__case__caseTexteDroit__sup__lentille {
+          width: auto;
+          height: auto;
+          display: flex;
+          justify-content: center;
+          align-self: center;
+          padding: 5px 5px; }
+      .viewver__case__caseTexteDroit__inf {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        margin: auto;
+        align-items: center;
+        border: 3px solid #e2e2da; }
+        .viewver__case__caseTexteDroit__inf__price {
+          width: auto;
+          height: auto;
+          display: flex; }
+        .viewver__case__caseTexteDroit__inf__qte {
+          width: auto;
+          height: auto;
+          display: flex; }
+        .viewver__case__caseTexteDroit__inf__sTotal {
+          width: auto;
+          height: auto;
+          display: flex; }
 
 /*# sourceMappingURL=style.css.map */

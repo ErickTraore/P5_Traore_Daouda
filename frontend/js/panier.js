@@ -23,98 +23,114 @@ inputenvoyer.onclick = () => {
 data = JSON.parse(localStorage.getItem("panier"));
 console.log(data);
 
+
 var p0 = document.getElementById("orinoco");
-// p0.setAttribute("class", "viewver");
+// let articles = [];
+pe = document.createElement("div");
+p0.appendChild(pe);
+pe.setAttribute("id", "case");
+pe.setAttribute("class", "viewver");
 
-var e = document.createElement("div");
-p0.appendChild(e);
-e.setAttribute("id", "card");
-e.setAttribute("class", "viewver");
-var p = document.getElementById("card");
+class Articles {
 
-for (i = 0; i < data.length; i++) {
+    constructor(nom, qte, prix_unit, lentille, imgSrc) {
+        this.nom = nom;
+        this.qte = qte;
+        this.prix_unit = prix_unit;
+        this.lentille = lentille;
+        this.imgSrc = imgSrc;
+    }
+}
+for (let i = 0; i < data.length; i++) {
+    let article = new Articles(
+        data[i].nom,
+        data[i].qte,
+        data[i].prix_unit,
+        data[i].lentille,
+        data[i].imageUrl
+    );
     var tot = parseInt(data[i].prix_unit) * parseInt(data[i].qte);
+    // console.log(data.length);
+    var pa = document.createElement("div");
+    pe.appendChild(pa);
+    pa.setAttribute("id", i);
+    pa.setAttribute("class", "viewver__case");
+
+    var ps = document.createElement("div");
+    pa.appendChild(ps);
+    ps.setAttribute("id", "caseTexteGauche");
+    ps.setAttribute("class", "viewver__case__caseTexteGauche");
+
     var img = document.createElement("IMG");
     img.src = data[i].imgSrc;
-    p.appendChild(img);
-    img.setAttribute("class", "viewver__img");
+    ps.appendChild(img);
+    img.setAttribute("class", "viewver__case__caseTexteGauche__img");
 
-    var e = document.createElement("div");
-    e.innerHTML =
-        "Model:" +
-        data[i].nom +
-        "<br/>" +
-        data[i].lentille +
-        "<br/>" +
-        "Prix:" +
-        data[i].prix_unit;
-    p.appendChild(e);
-    e.setAttribute("class", "viewver__panier1");
+    var pb = document.createElement("button");
+    pb.innerHTML = "Suprimmez";
+    ps.appendChild(pb);
+    pb.setAttribute("id", "caseTexteGaucheEcrease");
+    pb.setAttribute("class", "viewver__case__caseTexteGauche__ecrease");
 
-    var e = document.createElement("div");
-    e.innerHTML = "Quantité:" + data[i].qte + "<br/>" + "Prix Total:" + tot;
-    p.appendChild(e);
-    e.setAttribute("class", "viewver__panier2");
+    var px = document.createElement("div");
+    pa.appendChild(px);
+    px.setAttribute("id", "caseTexteDroit");
+    px.setAttribute("class", "viewver__case__caseTexteDroit");
 
-    var es = document.createElement("input");
-    let insert = i;
-    p.appendChild(es);
-    es.setAttribute("class", "viewver__num");
-    es.setAttribute("id", "num");
-    // es.setAttribute("type", "numeric");
-    es.setAttribute("value", insert);
-
-    var es = document.createElement("div");
-    es.innerHTML = i;
-    p.appendChild(es);
-    es.setAttribute("class", "viewver__hide");
-    es.setAttribute("id", "hide");
-
-    var e = document.createElement("div");
-    e.innerHTML = "Suprimer";
-    p.appendChild(e);
-    e.setAttribute("class", "viewver__suprimer");
-    e.addEventListener("click", function() {
-        alert("ok");
-        alert(i);
-
-        let testnum = document.getElementById("num").value;
-        alert(testnumgit status);
-
-        // let testhide = document.getElementById("hide");
-        // testhide.innerText = `${testnum}`;
-        // alert(testhide);
-        console.log(testnum);
-    });
+    var py = document.createElement("div");
+    px.appendChild(py);
+    py.setAttribute("id", "texte-sup");
+    py.setAttribute("class", "viewver__case__caseTexteDroit__sup");
 
     var e = document.createElement("div");
     e.innerHTML = data[i].nom;
-    p.appendChild(e);
-    e.setAttribute("class", "viewver__name");
-
-    var e = document.createElement("div");
-    e.innerHTML = data[i].prix_unit;
-    p.appendChild(e);
-    e.setAttribute("class", "viewver__price");
-
-    var e = document.createElement("div");
-    e.innerHTML = data[i].qte;
-    p.appendChild(e);
-    e.setAttribute("class", "viewver__quantite");
+    py.appendChild(e);
+    e.setAttribute("id", "nom");
+    e.setAttribute("class", "viewver__case__caseTexteDroit__sup__nom");
 
     var e = document.createElement("div");
     e.innerHTML = data[i].lentille;
-    p.appendChild(e);
-    e.setAttribute("class", "viewver__objectif");
+    py.appendChild(e);
+    e.setAttribute("id", "lentille");
+    e.setAttribute("class", "viewver__case__caseTexteDroit__sup__lentille");
 
-    //     var e = document.createElement("a");
-    //     e.classList.add("viewver__article");
-    //     e.href = "pageProduct.html?id=" + data[i]._id;
-    //     e.innerHTML = "Retour";
-    //     p.appendChild(e);
+    var pi = document.createElement("div");
+    px.appendChild(pi);
+    pi.setAttribute("id", "texte-inf");
+    pi.setAttribute("class", "viewver__case__caseTexteDroit__inf");
 
-    //     var elm = document.createElement("div");
-    //     elm.innerHTML = "N°" + " " + i;
-    //     p.appendChild(e);
-    //     elm.setAttribute("class", "viewver__num");
+    var e = document.createElement("div");
+    e.innerHTML = "P.u:" + " " +
+        data[i].prix_unit;
+    pi.appendChild(e);
+    e.setAttribute("id", "prix");
+    e.setAttribute("class", "viewver__case__caseTexteDroit__inf__price");
+
+    var e = document.createElement("div");
+    e.innerHTML = "Qté:" + " " + data[i].qte;
+    pi.appendChild(e);
+    e.setAttribute("id", "qte");
+    e.setAttribute("class", "viewver__case__caseTexteDroit__inf__qte");
+
+    var e = document.createElement("div");
+    e.innerHTML = "s/tot:" + " " + tot;
+    pi.appendChild(e);
+    e.setAttribute("id", "sTotal");
+    e.setAttribute("class", "viewver__case__caseTexteDroit__inf__sTotal");
+
+
 }
+// suppression d'objet
+var pos = document.getElementById("caseTexteGaucheEcrease");
+alert(pos)
+pos.addEventListener("click", function() {
+    // alert("Chariot envoyé");
+    // console.log("Chariot envoyé");
+    // // $(this).parents("div").attr("id");
+    // // let res = "test à lire";
+    // // let res = $(this).parents("div").attr("id");
+
+    // var res = $(this).parent().parent().attr("id");
+    // alert(res);
+    // console.log(res);
+});
