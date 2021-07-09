@@ -70,6 +70,7 @@ function getOneProducts() {
             p.appendChild(crea5);
             crea5.setAttribute("for", "qte");
             crea5.innerHTML = "Choisissez une quantité";
+
             //modif inserez quantité
             crea6 = document.createElement("form");
             p.appendChild(crea6);
@@ -81,6 +82,12 @@ function getOneProducts() {
             crea61.setAttribute("type", "button");
             crea61.setAttribute("value", "-");
             crea61.setAttribute("class", "output__divQte__qte");
+            crea61.addEventListener("click", function() {
+                if (result > 1 && result <= 99) {
+                    result--;
+                    document.getElementById("result").value = result;
+                }
+            });
 
             crea62 = document.createElement("input");
             crea6.appendChild(crea62);
@@ -95,24 +102,25 @@ function getOneProducts() {
             crea63.setAttribute("type", "button");
             crea63.setAttribute("value", "+");
             crea63.setAttribute("class", "output__divQte__qte");
-
-            let res = document.getElementById("result");
-            result = parseInt(res.value, 10);
-            let plus = document.getElementById("plus");
-            let moins = document.getElementById("moins");
-
-            plus.addEventListener("click", function() {
+            crea63.addEventListener("click", function() {
                 if (result >= 1 && result < 99) {
                     result++;
                     document.getElementById("result").value = result;
                 }
             });
-            moins.addEventListener("click", function() {
-                if (result > 1 && result <= 99) {
-                    result--;
-                    document.getElementById("result").value = result;
-                }
-            });
+
+            let res = document.getElementById("result");
+            result = parseInt(res.value, 10);
+
+            crea64 = document.createElement("btn");
+            crea64.innerHTML = "Continuez vos achats"
+            p.appendChild(crea64);
+            crea64.setAttribute("id", "btn_2");
+            crea64.setAttribute("class", "output__divQte__btn2");
+            // crea64.addEventListener("click", function() {
+            //     var href = "index.html";
+            //     window.location.href = href;
+            // });
 
             //fin modif inserez quantité
 
@@ -132,6 +140,31 @@ function getOneProducts() {
             };
 
             boutonProduct.onclick = () => {
+                if (crea62.value == "" || btn.value == "") {
+                    document.getElementById("erreur").innerHTML = "Choisissez obligatoirement une quantité et un objectif";
+                } else {
+                    var sous_total;
+                    const product = {
+                        nom: data.name,
+                        qte: crea62.value,
+                        prix_unit: data.price / 100 + "" + "€",
+                        lentille: btn.value,
+                        sous_total: crea62.value * (data.price / 100),
+                        // sous_total: (crea6.value =
+                        //     crea6.value * (data.price / 100)),
+                        imgSrc: data.imageUrl,
+                        // id: data._id,
+                        // description: data.description,
+                    };
+                    // panier.push(panier);
+                    document.getElementById("erreur").innerHTML = "";
+
+                    localStorage.setItem("product", JSON.stringify(product));
+                    var href = "panier.html";
+                    window.location.href = href;
+                }
+            };
+            btn_2.onclick = () => {
                 if (crea62.value == "" || btn.value == "") {
                     document.getElementById("erreur").innerHTML =
                         "Choisissez obligatoirement une quantité et un objectif";
@@ -153,8 +186,7 @@ function getOneProducts() {
                     document.getElementById("erreur").innerHTML = "";
 
                     localStorage.setItem("product", JSON.stringify(product));
-                    var href = "panier.html";
-
+                    var href = "index.html";
                     window.location.href = href;
                 }
             };

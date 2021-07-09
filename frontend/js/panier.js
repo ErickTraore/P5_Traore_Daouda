@@ -1,27 +1,50 @@
 ﻿product = JSON.parse(localStorage.getItem("product"));
 console.log(product);
-
-var panier = localStorage.getItem("panier") || [];
+if (product === null) {
+    alert("on est au 1");
+    window.location.href = "index.html";
+}
+var panier = JSON.parse(localStorage.getItem("panier")) || [];
+var controlSave = true;
 if (Array.isArray(panier) && panier.length == 0) {
     panier = [];
     console.log("le tableau existe, mais il s'agit d'une première utilisation");
     localStorage.setItem("panier", JSON.stringify([product]));
 } else {
+    console.log(panier.length);
+    for (i = 0; i < panier.length; i++) {
+
+        if (JSON.stringify(product) === JSON.stringify(panier[i])) {
+            controlSave = false;
+        }
+    }
     var panier = JSON.parse(localStorage.getItem("panier"));
     console.log("Le tableau panier contient des products");
-    panier.push(product);
-    localStorage.setItem("panier", JSON.stringify(panier));
-    // var stored = JSON.parse(localStorage.getItem("panier"));
-    console.log();
+    if (controlSave) {
+        panier.push(product);
+        localStorage.setItem("panier", JSON.stringify(panier));
+        // var stored = JSON.parse(localStorage.getItem("panier"));
+    }
 }
+
+
 inputenvoyer.onclick = () => {
     var href = "test.html";
     window.location.href = href;
 };
 
+
+
 //Debut d'insertion page view
 data = JSON.parse(localStorage.getItem("panier"));
-console.log(data);
+console.log(data.length);
+console.log(JSON.stringify(product));
+console.log(JSON.stringify(product) === JSON.stringify(data[1]));
+alert("on est au 2");
+
+
+
+
 
 
 var p0 = document.getElementById("orinoco");
@@ -30,9 +53,7 @@ pe = document.createElement("div");
 p0.appendChild(pe);
 pe.setAttribute("id", "case");
 pe.setAttribute("class", "viewver");
-
 class Articles {
-
     constructor(nom, qte, prix_unit, lentille, imgSrc) {
         this.nom = nom;
         this.qte = qte;
@@ -67,10 +88,43 @@ for (let i = 0; i < data.length; i++) {
     img.setAttribute("class", "viewver__case__caseTexteGauche__img");
 
     var pb = document.createElement("button");
-    pb.innerHTML = "Suprimmez";
+    pb.innerHTML = "Supprimmez";
     ps.appendChild(pb);
     pb.setAttribute("id", "caseTexteGaucheEcrease");
     pb.setAttribute("class", "viewver__case__caseTexteGauche__ecrease");
+    pb.addEventListener("click", (event) => {
+        // Démarrage la procédure d 'annulation
+        console.log("le programme démarre la procédure d 'annulation");
+        console.log("Il s'agit du retrait d'un article qui se déroule en 4 phases");
+        console.log(
+            "phase 1: Appel de l/'array et application de la formule splice"
+        );
+        let nbreAvtRec = data.length;
+        this.data.splice(i, 1);
+        let nbreApsRec = data.length;
+        console.log("nbreAvantRecup = " + nbreAvtRec);
+        console.log("nbreAprèsRecup = " + nbreApsRec);
+        if (nbreApsRec + 1 == nbreAvtRec) {
+            console.log("ok pour annulation");
+        } else {
+            console.log(
+                "echec de la pocédure d'annulation à la ligne 93 DU FICHIER PANIER.JS"
+            );
+        }
+        localStorage.removeItem("product");
+        localStorage.removeItem("panier");
+        // stringify le array
+        // let strPanierBack = JSON.stringify(this.panierBacks);
+        // console.log(strPanierBack);
+        // //vide le localstorage
+        // localStorage.clear();
+        // console.log("localstorage vidé normalement ?");
+        // // mettre à jour le localStorage
+        // localStorage.setItem("strPanier", strPanierBack);
+        // console.log("localstorage mis à jour normalement ?");
+        // // relancer getFromTheStorage
+        // this.getFromTheStorage();
+    });
 
     var px = document.createElement("div");
     pa.appendChild(px);
@@ -100,8 +154,7 @@ for (let i = 0; i < data.length; i++) {
     pi.setAttribute("class", "viewver__case__caseTexteDroit__inf");
 
     var e = document.createElement("div");
-    e.innerHTML = "P.u:" + " " +
-        data[i].prix_unit;
+    e.innerHTML = "P.u:" + " " + data[i].prix_unit;
     pi.appendChild(e);
     e.setAttribute("id", "prix");
     e.setAttribute("class", "viewver__case__caseTexteDroit__inf__price");
@@ -117,20 +170,4 @@ for (let i = 0; i < data.length; i++) {
     pi.appendChild(e);
     e.setAttribute("id", "sTotal");
     e.setAttribute("class", "viewver__case__caseTexteDroit__inf__sTotal");
-
-
 }
-// suppression d'objet
-var pos = document.getElementById("caseTexteGaucheEcrease");
-alert(pos)
-pos.addEventListener("click", function() {
-    // alert("Chariot envoyé");
-    // console.log("Chariot envoyé");
-    // // $(this).parents("div").attr("id");
-    // // let res = "test à lire";
-    // // let res = $(this).parents("div").attr("id");
-
-    // var res = $(this).parent().parent().attr("id");
-    // alert(res);
-    // console.log(res);
-});

@@ -190,16 +190,30 @@ td {
     display: flex;
     align-self: center; }
     .output__divQte__qte {
-      width: 36%;
+      width: 100%;
       display: block;
       align-items: center; }
+    .output__divQte__btn2 {
+      width: 100%;
+      height: 20%;
+      min-width: 200px;
+      max-width: 230px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #aab9eb;
+      border: 2px solid #beb8b8;
+      border-top: none;
+      border-radius: 0px 0px 0px 0px; }
     .output__divQte__btn {
       width: 100%;
       height: 20%;
       min-width: 200px;
       max-width: 230px;
       margin: auto;
-      display: block;
+      display: flex;
+      justify-content: center;
       align-items: center;
       background-color: #8ee78e;
       border: 2px solid #beb8b8;

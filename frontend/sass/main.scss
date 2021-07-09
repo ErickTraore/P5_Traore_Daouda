@@ -216,9 +216,23 @@
                     align-self: center;
                     // border: 3px solid;
                     &__qte {
-                        width: 36%;
+                        width: 100%;
                         display: block;
                         align-items: center;
+                    }
+                    &__btn2 {
+                        width: 100%;
+                        height: 20%;
+                        min-width: 200px;
+                        max-width: 230px;
+                        margin: auto;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: rgb(170, 185, 235);
+                        border: 2px solid rgb(190, 184, 184);
+                        border-top: none;
+                        border-radius: 0px 0px 0px 0px;
                     }
                     &__btn {
                         width: 100%;
@@ -226,7 +240,8 @@
                         min-width: 200px;
                         max-width: 230px;
                         margin: auto;
-                        display: block;
+                        display: flex;
+                        justify-content: center;
                         align-items: center;
                         background-color: rgb(142, 231, 142);
                         border: 2px solid rgb(190, 184, 184);
