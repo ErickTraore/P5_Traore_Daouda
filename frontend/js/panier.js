@@ -1,39 +1,39 @@
-﻿product = JSON.parse(localStorage.getItem("product"));
+﻿var controlSave = true;
+var controlProduct = true;
+product = JSON.parse(localStorage.getItem("product"));
 console.log(product);
 if (product === null) {
     alert("on est au 1");
+    var controlProduct = false;
     window.location.href = "index.html";
 }
 var panier = JSON.parse(localStorage.getItem("panier")) || [];
-var controlSave = true;
 if (Array.isArray(panier) && panier.length == 0) {
     panier = [];
     console.log("le tableau existe, mais il s'agit d'une première utilisation");
-    localStorage.setItem("panier", JSON.stringify([product]));
+    if (product !== null) {
+        localStorage.setItem("panier", JSON.stringify([product]));
+    }
 } else {
     console.log(panier.length);
     for (i = 0; i < panier.length; i++) {
-
         if (JSON.stringify(product) === JSON.stringify(panier[i])) {
             controlSave = false;
         }
     }
     var panier = JSON.parse(localStorage.getItem("panier"));
     console.log("Le tableau panier contient des products");
-    if (controlSave) {
+    if (controlSave && controlProduct) {
         panier.push(product);
         localStorage.setItem("panier", JSON.stringify(panier));
         // var stored = JSON.parse(localStorage.getItem("panier"));
     }
 }
 
-
 inputenvoyer.onclick = () => {
     var href = "test.html";
     window.location.href = href;
 };
-
-
 
 //Debut d'insertion page view
 data = JSON.parse(localStorage.getItem("panier"));
@@ -41,11 +41,6 @@ console.log(data.length);
 console.log(JSON.stringify(product));
 console.log(JSON.stringify(product) === JSON.stringify(data[1]));
 alert("on est au 2");
-
-
-
-
-
 
 var p0 = document.getElementById("orinoco");
 // let articles = [];
