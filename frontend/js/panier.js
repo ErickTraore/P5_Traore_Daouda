@@ -30,17 +30,16 @@ if (Array.isArray(panier) && panier.length == 0) {
     }
 }
 
-inputenvoyer.onclick = () => {
-    var href = "test.html";
-    window.location.href = href;
-};
+// inputenvoyer.onclick = () => {
+//     var href = "test.html";
+//     window.location.href = href;
+// };
 
 //Debut d'insertion page view
 data = JSON.parse(localStorage.getItem("panier"));
 console.log(data.length);
 console.log(JSON.stringify(product));
 console.log(JSON.stringify(product) === JSON.stringify(data[1]));
-alert("on est au 2");
 
 var p0 = document.getElementById("orinoco");
 // let articles = [];
@@ -166,3 +165,32 @@ for (let i = 0; i < data.length; i++) {
     e.setAttribute("id", "sTotal");
     e.setAttribute("class", "viewver__case__caseTexteDroit__inf__sTotal");
 }
+// Création desboutons pour le menu panier
+var p0 = document.getElementById("orinoco");
+panierBtn = document.createElement("div");
+p0.appendChild(panierBtn);
+panierBtn.setAttribute("id", "PanierBtn");
+
+panierBtn1 = document.createElement("button");
+panierBtn.appendChild(panierBtn1);
+panierBtn1.setAttribute("id", "PanierBtnChariot");
+panierBtn1.innerHTML = "Retour achats";
+panierBtn1.addEventListener('click', function() {
+    window.location.href = "index.html";
+});
+
+panierBtn2 = document.createElement("button");
+panierBtn.appendChild(panierBtn2);
+panierBtn2.setAttribute("id", "PanierBtnCde");
+panierBtn2.innerHTML = "Commandez";
+panierBtn2.addEventListener("click", function() {
+    window.location.href = "commande.html";
+});
+
+panierBtn3 = document.createElement("button");
+panierBtn.appendChild(panierBtn3);
+panierBtn3.setAttribute("id", "PanierBtnVider");
+panierBtn3.innerHTML = "Vider panier";
+panierBtn3.addEventListener("click", function() {
+    localStorage.clear();
+});
