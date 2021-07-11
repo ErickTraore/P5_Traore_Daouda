@@ -87,7 +87,7 @@ for (let i = 0; i < data.length; i++) {
     pb.setAttribute("id", "caseTexteGaucheEcrease");
     pb.setAttribute("class", "viewver__case__caseTexteGauche__ecrease");
     pb.addEventListener("click", (event) => {
-        // Démarrage la procédure d 'annulation
+        // Démarrage de la procédure d 'annulation unitaire d'1 commande, ou suppression.
         console.log("le programme démarre la procédure d 'annulation");
         console.log("Il s'agit du retrait d'un article qui se déroule en 4 phases");
         console.log(
@@ -105,19 +105,11 @@ for (let i = 0; i < data.length; i++) {
                 "echec de la pocédure d'annulation à la ligne 93 DU FICHIER PANIER.JS"
             );
         }
-        localStorage.removeItem("product");
+        console.log(data.length);
+        console.log(JSON.stringify(data));
         localStorage.removeItem("panier");
-        // stringify le array
-        // let strPanierBack = JSON.stringify(this.panierBacks);
-        // console.log(strPanierBack);
-        // //vide le localstorage
-        // localStorage.clear();
-        // console.log("localstorage vidé normalement ?");
-        // // mettre à jour le localStorage
-        // localStorage.setItem("strPanier", strPanierBack);
-        // console.log("localstorage mis à jour normalement ?");
-        // // relancer getFromTheStorage
-        // this.getFromTheStorage();
+        localStorage.setItem("panier", JSON.stringify(data));
+        window.location.reload();
     });
 
     var px = document.createElement("div");
@@ -164,9 +156,31 @@ for (let i = 0; i < data.length; i++) {
     pi.appendChild(e);
     e.setAttribute("id", "sTotal");
     e.setAttribute("class", "viewver__case__caseTexteDroit__inf__sTotal");
+
 }
-// Création desboutons pour le menu panier
-var p0 = document.getElementById("orinoco");
+// Création d'une div pour le total.
+totaldiv = document.createElement("div");
+p0.appendChild(totaldiv);
+totaldiv.setAttribute("id", "totaldiv");
+totaldiv.setAttribute(
+    "class",
+    "viewver__div"
+);
+
+totalbtn = document.createElement("div");
+totaldiv.appendChild(totalbtn);
+totalbtn.setAttribute("id", "totalbtn");
+totalbtn.setAttribute(
+    "class",
+    "viewver__div__total"
+);
+let panierTotal = 0;
+for (i = 0; i < data.length; i++) {
+    panierTotal += data[i].sous_total;
+}
+totalbtn.innerHTML = "TOTAL:" + " " + panierTotal
+    // Création desboutons pour le menu panier
+
 panierBtn = document.createElement("div");
 p0.appendChild(panierBtn);
 panierBtn.setAttribute("id", "PanierBtn");

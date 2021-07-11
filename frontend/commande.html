@@ -17,20 +17,20 @@
         <img src="../backend/images/logo_orinoco_160.png" alt="logo du site">
     </div>
     <div class="topnav" id="myTopnav">
-        <a href="#home" class="active">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+        <a href="commande.html">Contact</a>
         <a href="#about">About</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
         </a>
     </div>
     <h3 id="cde">Je m'identifie</h3>
-    <p>Les champs avec * sont obligatoires</p>
+    <p>Tous les champs sont obligatoires</p>
 
     <form id="form-to-check">
         <p>
-            <label>Nom : <input type="text" name="firstname" id="firstname" /></label><br />
+            <label>Nom : <input type="text" name="firstname" id="firstname" placeholder="Entrez votre nom."/></label><br />
             <div class="result" id="firstname-validation"></div>
         </p>
         <p>
@@ -41,14 +41,14 @@
             <label>Code : <input type="text" name="code" id="code"  /></label><br />
             <div class="result" id="code-validation"></div>
         </p>
-        <!-- <p> -->
-        <!--         <label>Email : <input type="email" name="email" required /></label>
+        <p>
+            <label>Email : <input type="email" name="email" required /></label>
         </p>
         <p>
             <label>Tel : <input type="tel" name="tel" required /></label>
         </p>
-        <p> -->
-        <input type="submit" value="Vérifier" id="submit-btn" />
+        <p>
+            <input type="submit" value="Vérifier" id="submit-btn" />
         </p>
 
     </form>
