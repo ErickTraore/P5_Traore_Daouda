@@ -145,9 +145,10 @@ function getOneProducts() {
                 } else {
                     var sous_total;
                     const product = {
+                        _id: data._id,
                         nom: data.name,
                         qte: crea62.value,
-                        prix_unit: data.price / 100 + "" + "€",
+                        prix_unit: data.price / 100,
                         lentille: btn.value,
                         sous_total: crea62.value * (data.price / 100),
                         // sous_total: (crea6.value =

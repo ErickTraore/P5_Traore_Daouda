@@ -1,15 +1,14 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="public/css/style.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
     <script defer src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Document-Commande</title>
 </head>
 
 <body>
@@ -21,6 +20,7 @@
         <a href="#news">News</a>
         <a href="commande.html">Contact</a>
         <a href="#about">About</a>
+        <a href="panier.html">Mon panier</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
         </a>
@@ -28,9 +28,9 @@
     <h3 id="cde">Je m'identifie</h3>
     <p>Tous les champs sont obligatoires</p>
 
-    <form id="form-to-check">
+    <form id="form">
         <p>
-            <label>Nom : <input type="text" name="firstname" id="firstname" placeholder="Entrez votre nom."/></label><br />
+            <label>Nom : <input type="text" name="firstname" id="firstname"/></label><br />
             <div class="result" id="firstname-validation"></div>
         </p>
         <p>
@@ -38,23 +38,28 @@
             <div class="result" id="lastname-validation"></div>
         </p>
         <p>
-            <label>Code : <input type="text" name="code" id="code"  /></label><br />
-            <div class="result" id="code-validation"></div>
+            <label>Adress : <input type="adress" name="adress" id="adress" /></label>
+            <div class="result" id="adress-validation"></div>
+
+        </p>
+
+        <p>
+            <label>City : <input type="text" name="city" id="city"  /></label><br />
+            <div class="result" id="city-validation"></div>
         </p>
         <p>
-            <label>Email : <input type="email" name="email" required /></label>
+            <label>Email : <input type="email" name="email" id="email"/></label>
+            <div class="result" id="email-validation"></div>
+
         </p>
-        <p>
-            <label>Tel : <input type="tel" name="tel" required /></label>
-        </p>
+
         <p>
             <input type="submit" value="Vérifier" id="submit-btn" />
         </p>
 
     </form>
-    <script type="text/javascript" src="js/commande.js"></script>
-
-
+    <div id="formAlert"></div>
+    <script type=" text/javascript " src="js/commande.js "></script>
 </body>
 
 </html>

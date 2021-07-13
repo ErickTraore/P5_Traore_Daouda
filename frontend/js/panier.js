@@ -178,7 +178,8 @@ let panierTotal = 0;
 for (i = 0; i < data.length; i++) {
     panierTotal += data[i].sous_total;
 }
-totalbtn.innerHTML = "TOTAL:" + " " + panierTotal
+totalbtn.innerHTML = "TOTAL:" + " " +
+    panierTotal
     // Création desboutons pour le menu panier
 
 panierBtn = document.createElement("div");
@@ -206,5 +207,6 @@ panierBtn.appendChild(panierBtn3);
 panierBtn3.setAttribute("id", "PanierBtnVider");
 panierBtn3.innerHTML = "Vider panier";
 panierBtn3.addEventListener("click", function() {
+    window.location.reload();
     localStorage.clear();
 });

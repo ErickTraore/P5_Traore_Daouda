@@ -39,7 +39,7 @@ function getAllProducts() {
                 p.appendChild(e);
             }
             // .catch(function(err) {
-            //     //Une erreur est survenue
+            //     //Une erreur est survenue}
         });
 }
 getAllProducts();
