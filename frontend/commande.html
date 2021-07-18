@@ -25,40 +25,43 @@
             <i class="fa fa-bars"></i>
         </a>
     </div>
-    <h3 id="cde">Je m'identifie</h3>
-    <p>Tous les champs sont obligatoires</p>
+    <div class="divCde">
+        <h3 id="cde">Je m'identifie</h3>
+        <p>Tous les champs sont obligatoires</p>
+    </div>
 
-    <form id="form">
-        <p>
-            <label>Nom : <input type="text" name="firstname" id="firstname"/></label><br />
-            <div class="result" id="firstname-validation"></div>
-        </p>
-        <p>
-            <label>Prénom : <input type="text" name="lastname" id="lastname" /></label><br />
-            <div class="result" id="lastname-validation"></div>
-        </p>
-        <p>
-            <label>Adress : <input type="adress" name="adress" id="adress" /></label>
-            <div class="result" id="adress-validation"></div>
+    <div class="cde">
+        <form id="form" class="cde__form">
+            <p>
+                <label>Nom : <input type="text" name="firstname" id="firstname"/></label><br />
+                <div class="cde__form__result" id="firstname-validation"></div>
+            </p>
+            <p>
+                <label>Prénom : <input type="text" name="lastname" id="lastname" /></label><br />
+                <div class="cde__form__result" id="lastname-validation"></div>
+            </p>
+            <p>
+                <label>Adress : <input type="adress" name="adress" id="adress" /></label>
+                <div class="cde__form__result" id="adress-validation"></div>
+            </p>
 
-        </p>
+            <p>
+                <label>City : <input type="text" name="city" id="city"  /></label><br />
+                <div class="cde__form__result" id="city-validation"></div>
+            </p>
+            <p>
+                <label>Email : <input type="email" name="email" id="email"/></label>
+                <div class="cde__form__result" id="email-validation"></div>
+            </p>
 
-        <p>
-            <label>City : <input type="text" name="city" id="city"  /></label><br />
-            <div class="result" id="city-validation"></div>
-        </p>
-        <p>
-            <label>Email : <input type="email" name="email" id="email"/></label>
-            <div class="result" id="email-validation"></div>
+            <p>
+                <input type="submit" value="Envoyez" id="submit-btn" />
+            </p>
 
-        </p>
+        </form>
+        <div id="formAlert"></div>
+    </div>
 
-        <p>
-            <input type="submit" value="Vérifier" id="submit-btn" />
-        </p>
-
-    </form>
-    <div id="formAlert"></div>
     <script type=" text/javascript " src="js/commande.js "></script>
 </body>
 

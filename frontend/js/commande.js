@@ -4,13 +4,6 @@ let testsubmitlastname = false;
 let testsubmitemail = false;
 let testsubmitadress = false;
 let testsubmitcity = false;
-// var money = 0;
-// function getNum(val) {
-//     if (isNaN(val)) {
-//         return 0;
-//     }
-//     return val;
-// }
 
 if (veriform()) {
     document.getElementById("submit-btn").removeAttribute("disabled");
@@ -29,7 +22,7 @@ document.getElementById("city").addEventListener("input", function(e) {
         // testVerifcity();
         testVerif();
     } else {
-        getCityValidation().innerText = "City invalide";
+        getCityValidation().innerText = "City_invalide";
         testsubmit = false;
         // testVerifcty();
         testVerif();
@@ -51,12 +44,12 @@ function getfirstnameValidation() {
 }
 document.getElementById("firstname").addEventListener("input", function(e) {
     if (/^[a-zA-Z]{3,15}$/.test(e.target.value)) {
-        getfirstnameValidation().innerText = "firstname valide";
+        getfirstnameValidation().innerText = "Nom valide";
         testsubmitfirstname = true;
         testVerif();
         // testVeriffirstname();
     } else {
-        getfirstnameValidation().innerText = "firstname invalide";
+        getfirstnameValidation().innerText = "Nom_invalide";
         testsubmitfirstname = false;
         // testVeriffirstname();
         testVerif();
@@ -79,12 +72,12 @@ function getLastnameValidation() {
 
 document.getElementById("lastname").addEventListener("input", function(e) {
     if (/^[a-zA-Z]{3,15}$/.test(e.target.value)) {
-        getLastnameValidation().innerText = "Lastname valide";
+        getLastnameValidation().innerText = "Prénom valide";
         testsubmitlastname = true;
         // testVeriflastname();
         testVerif();
     } else {
-        getLastnameValidation().innerText = "lastname invalide";
+        getLastnameValidation().innerText = "Prénom_invalide";
         testsubmitlastname = false;
         // testVeriflastname();
         testVerif();
@@ -115,7 +108,7 @@ document.getElementById("email").addEventListener("input", function(e) {
         testsubmitemail = true;
         testVerif();
     } else {
-        getEmailValidation().innerText = "Email invalide";
+        getEmailValidation().innerText = "Email_invalide";
         testsubmitemail = false;
         // testVerifemail();
         testVerif();
@@ -140,12 +133,12 @@ document.getElementById("adress").addEventListener("input", function(e) {
     if (
         /^([0-9]{1,3}(([,. ]?){1}[a-zA-Zàâäéèêëïîôöùûüç' ]+))$/.test(e.target.value)
     ) {
-        getAdressValidation().innerText = "adress valide";
+        getAdressValidation().innerText = "adresse valide";
         testsubmitadress = true;
         // testVeriftel();
         testVerif();
     } else {
-        getAdressValidation().innerText = "Adress invalide";
+        getAdressValidation().innerText = "Adresse_invalide";
         testsubmitadress = false;
         // testVeriftel();
         testVerif();
@@ -192,7 +185,6 @@ async function send(ev) {
         city: document.getElementById("city").value,
         email: document.getElementById("email").value,
     };
-    // console.log(contact);
 
     panier = JSON.parse(localStorage.getItem("panier"));
     await console.log(panier.length);
@@ -203,8 +195,6 @@ async function send(ev) {
         products.push(panier[i]._id);
     }
     console.log(products);
-
-    alert("je suis un Yankee deux");
     //Création du l'array products
     result = {
         contact,
@@ -214,18 +204,23 @@ async function send(ev) {
     console.log(result.products);
     alert("je suis un Yankee trois");
     fetch("http://localhost:3000/api/cameras/order/", {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(result),
-    }).then(function(res) {
-        console.log(res);
-        if (res.ok) {
-            return res.json();
-        }
-    });
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(result),
+        })
+        .then(function(res) {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(function(value) {
+            console.log(value);
+            localStorage.setItem("merci", JSON.stringify(value));
+            window.location.href = "merci.html";
+        });
 
 }
 

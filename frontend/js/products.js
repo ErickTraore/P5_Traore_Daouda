@@ -6,22 +6,25 @@
         x.className = "topnav";
     }
 }
-
+// Récuperez les produits sélectionnés par le client grace à l'api,en leur affectant deux inconnues:(une option et une quantité).
 function getOneProducts() {
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search.slice(1));
     params.append("pdtId", location.search.substring(4));
-
+    // extraire l'id du produit et l'inserez dans la requette de l'api
     let id = location.search.substring(4);
     infoId = params.get("pdtId");
+    //Création d'une requette assynchrone
     let apiurl = "http://localhost:3000/api/cameras/" + params.get("pdtId");
     var p = document.getElementById("output");
+    //
     fetch(apiurl)
         .then(function(res) {
             if (res.ok) {
-                return res.json();
+                return res.json()
             }
         })
+        // Récupération du résultat de la promesse pour afficher les données de la mise en vente du produit.
         .then(function(data) {
             var img = document.createElement("IMG");
             img.src = data.imageUrl;
@@ -113,17 +116,10 @@ function getOneProducts() {
             result = parseInt(res.value, 10);
 
             crea64 = document.createElement("btn");
-            crea64.innerHTML = "Continuez vos achats"
+            crea64.innerHTML = "Continuez vos achats";
             p.appendChild(crea64);
             crea64.setAttribute("id", "btn_2");
             crea64.setAttribute("class", "output__divQte__btn2");
-            // crea64.addEventListener("click", function() {
-            //     var href = "index.html";
-            //     window.location.href = href;
-            // });
-
-            //fin modif inserez quantité
-
             crea7 = document.createElement("button");
             p.appendChild(crea7);
 
@@ -141,7 +137,8 @@ function getOneProducts() {
 
             boutonProduct.onclick = () => {
                 if (crea62.value == "" || btn.value == "") {
-                    document.getElementById("erreur").innerHTML = "Choisissez obligatoirement une quantité et un objectif";
+                    document.getElementById("erreur").innerHTML =
+                        "Choisissez obligatoirement une quantité et un objectif";
                 } else {
                     var sous_total;
                     const product = {
@@ -151,13 +148,8 @@ function getOneProducts() {
                         prix_unit: data.price / 100,
                         lentille: btn.value,
                         sous_total: crea62.value * (data.price / 100),
-                        // sous_total: (crea6.value =
-                        //     crea6.value * (data.price / 100)),
                         imgSrc: data.imageUrl,
-                        // id: data._id,
-                        // description: data.description,
                     };
-                    // panier.push(panier);
                     document.getElementById("erreur").innerHTML = "";
 
                     localStorage.setItem("product", JSON.stringify(product));
@@ -165,6 +157,7 @@ function getOneProducts() {
                     window.location.href = href;
                 }
             };
+            //Selectionner obligatoirement une quantité et un objectif
             btn_2.onclick = () => {
                 if (crea62.value == "" || btn.value == "") {
                     document.getElementById("erreur").innerHTML =
@@ -177,15 +170,10 @@ function getOneProducts() {
                         prix_unit: data.price / 100 + "" + "€",
                         lentille: btn.value,
                         sous_total: crea62.value * (data.price / 100),
-                        // sous_total: (crea6.value =
-                        //     crea6.value * (data.price / 100)),
                         imgSrc: data.imageUrl,
-                        // id: data._id,
-                        // description: data.description,
                     };
-                    // panier.push(panier);
                     document.getElementById("erreur").innerHTML = "";
-
+                    // Stockage des données du client dans le local storage.
                     localStorage.setItem("product", JSON.stringify(product));
                     var href = "index.html";
                     window.location.href = href;
@@ -194,7 +182,7 @@ function getOneProducts() {
         })
 
     .catch(function(err) {
-        // Une erreur est survenue
+        console.log(err);
     });
 }
 

@@ -1,212 +1,39 @@
-﻿var controlSave = true;
-var controlProduct = true;
-product = JSON.parse(localStorage.getItem("product"));
+﻿if (typeof product === "undefined") {
+    var product = JSON.parse(localStorage.getItem("product"));
+}
+if (typeof panier === "undefined") {
+    var panier = [];
+    panier = JSON.parse(localStorage.getItem("panier"));
+}
+
 console.log(product);
-if (product === null) {
-    alert("on est au 1");
-    var controlProduct = false;
-    window.location.href = "index.html";
+console.log(panier);
+
+function ajoutezPanier() {
+    panier = JSON.parse(localStorage.getItem("panier"));
+    panier.push(product);
+    localStorage.setItem("panier", JSON.stringify(panier));
 }
-var panier = JSON.parse(localStorage.getItem("panier")) || [];
-if (Array.isArray(panier) && panier.length == 0) {
+
+if (product === null && panier === null) {
+    alert("produit vide et panier vide, donc retour à l'index.");
+    localStorage.removeItem("product");
+    localStorage.removeItem("panier");
+    localStorage.removeItem("data");
+    window.location.href = "index.html";
+} else if (product === null && panier !== null) {
+    affichagePanier();
+} else if (product !== null && panier !== null) {
+    panier.push(product);
+    localStorage.setItem("panier", JSON.stringify(panier));
+    affichagePanier();
+    localStorage.removeItem("product");
+} else if (product !== null && panier == null) {
     panier = [];
-    console.log("le tableau existe, mais il s'agit d'une première utilisation");
-    if (product !== null) {
-        localStorage.setItem("panier", JSON.stringify([product]));
-    }
+    panier.push(product);
+    localStorage.setItem("panier", JSON.stringify(panier));
+    affichagePanier();
+    localStorage.removeItem("product");
 } else {
-    console.log(panier.length);
-    for (i = 0; i < panier.length; i++) {
-        if (JSON.stringify(product) === JSON.stringify(panier[i])) {
-            controlSave = false;
-        }
-    }
-    var panier = JSON.parse(localStorage.getItem("panier"));
-    console.log("Le tableau panier contient des products");
-    if (controlSave && controlProduct) {
-        panier.push(product);
-        localStorage.setItem("panier", JSON.stringify(panier));
-        // var stored = JSON.parse(localStorage.getItem("panier"));
-    }
+    console.log("defaut fichier panier.js");
 }
-
-// inputenvoyer.onclick = () => {
-//     var href = "test.html";
-//     window.location.href = href;
-// };
-
-//Debut d'insertion page view
-data = JSON.parse(localStorage.getItem("panier"));
-console.log(data.length);
-console.log(JSON.stringify(product));
-console.log(JSON.stringify(product) === JSON.stringify(data[1]));
-
-var p0 = document.getElementById("orinoco");
-// let articles = [];
-pe = document.createElement("div");
-p0.appendChild(pe);
-pe.setAttribute("id", "case");
-pe.setAttribute("class", "viewver");
-class Articles {
-    constructor(nom, qte, prix_unit, lentille, imgSrc) {
-        this.nom = nom;
-        this.qte = qte;
-        this.prix_unit = prix_unit;
-        this.lentille = lentille;
-        this.imgSrc = imgSrc;
-    }
-}
-for (let i = 0; i < data.length; i++) {
-    let article = new Articles(
-        data[i].nom,
-        data[i].qte,
-        data[i].prix_unit,
-        data[i].lentille,
-        data[i].imageUrl
-    );
-    var tot = parseInt(data[i].prix_unit) * parseInt(data[i].qte);
-    // console.log(data.length);
-    var pa = document.createElement("div");
-    pe.appendChild(pa);
-    pa.setAttribute("id", i);
-    pa.setAttribute("class", "viewver__case");
-
-    var ps = document.createElement("div");
-    pa.appendChild(ps);
-    ps.setAttribute("id", "caseTexteGauche");
-    ps.setAttribute("class", "viewver__case__caseTexteGauche");
-
-    var img = document.createElement("IMG");
-    img.src = data[i].imgSrc;
-    ps.appendChild(img);
-    img.setAttribute("class", "viewver__case__caseTexteGauche__img");
-
-    var pb = document.createElement("button");
-    pb.innerHTML = "Supprimmez";
-    ps.appendChild(pb);
-    pb.setAttribute("id", "caseTexteGaucheEcrease");
-    pb.setAttribute("class", "viewver__case__caseTexteGauche__ecrease");
-    pb.addEventListener("click", (event) => {
-        // Démarrage de la procédure d 'annulation unitaire d'1 commande, ou suppression.
-        console.log("le programme démarre la procédure d 'annulation");
-        console.log("Il s'agit du retrait d'un article qui se déroule en 4 phases");
-        console.log(
-            "phase 1: Appel de l/'array et application de la formule splice"
-        );
-        let nbreAvtRec = data.length;
-        this.data.splice(i, 1);
-        let nbreApsRec = data.length;
-        console.log("nbreAvantRecup = " + nbreAvtRec);
-        console.log("nbreAprèsRecup = " + nbreApsRec);
-        if (nbreApsRec + 1 == nbreAvtRec) {
-            console.log("ok pour annulation");
-        } else {
-            console.log(
-                "echec de la pocédure d'annulation à la ligne 93 DU FICHIER PANIER.JS"
-            );
-        }
-        console.log(data.length);
-        console.log(JSON.stringify(data));
-        localStorage.removeItem("panier");
-        localStorage.setItem("panier", JSON.stringify(data));
-        window.location.reload();
-    });
-
-    var px = document.createElement("div");
-    pa.appendChild(px);
-    px.setAttribute("id", "caseTexteDroit");
-    px.setAttribute("class", "viewver__case__caseTexteDroit");
-
-    var py = document.createElement("div");
-    px.appendChild(py);
-    py.setAttribute("id", "texte-sup");
-    py.setAttribute("class", "viewver__case__caseTexteDroit__sup");
-
-    var e = document.createElement("div");
-    e.innerHTML = data[i].nom;
-    py.appendChild(e);
-    e.setAttribute("id", "nom");
-    e.setAttribute("class", "viewver__case__caseTexteDroit__sup__nom");
-
-    var e = document.createElement("div");
-    e.innerHTML = data[i].lentille;
-    py.appendChild(e);
-    e.setAttribute("id", "lentille");
-    e.setAttribute("class", "viewver__case__caseTexteDroit__sup__lentille");
-
-    var pi = document.createElement("div");
-    px.appendChild(pi);
-    pi.setAttribute("id", "texte-inf");
-    pi.setAttribute("class", "viewver__case__caseTexteDroit__inf");
-
-    var e = document.createElement("div");
-    e.innerHTML = "P.u:" + " " + data[i].prix_unit;
-    pi.appendChild(e);
-    e.setAttribute("id", "prix");
-    e.setAttribute("class", "viewver__case__caseTexteDroit__inf__price");
-
-    var e = document.createElement("div");
-    e.innerHTML = "Qté:" + " " + data[i].qte;
-    pi.appendChild(e);
-    e.setAttribute("id", "qte");
-    e.setAttribute("class", "viewver__case__caseTexteDroit__inf__qte");
-
-    var e = document.createElement("div");
-    e.innerHTML = "s/tot:" + " " + tot;
-    pi.appendChild(e);
-    e.setAttribute("id", "sTotal");
-    e.setAttribute("class", "viewver__case__caseTexteDroit__inf__sTotal");
-
-}
-// Création d'une div pour le total.
-totaldiv = document.createElement("div");
-p0.appendChild(totaldiv);
-totaldiv.setAttribute("id", "totaldiv");
-totaldiv.setAttribute(
-    "class",
-    "viewver__div"
-);
-
-totalbtn = document.createElement("div");
-totaldiv.appendChild(totalbtn);
-totalbtn.setAttribute("id", "totalbtn");
-totalbtn.setAttribute(
-    "class",
-    "viewver__div__total"
-);
-let panierTotal = 0;
-for (i = 0; i < data.length; i++) {
-    panierTotal += data[i].sous_total;
-}
-totalbtn.innerHTML = "TOTAL:" + " " +
-    panierTotal
-    // Création desboutons pour le menu panier
-
-panierBtn = document.createElement("div");
-p0.appendChild(panierBtn);
-panierBtn.setAttribute("id", "PanierBtn");
-
-panierBtn1 = document.createElement("button");
-panierBtn.appendChild(panierBtn1);
-panierBtn1.setAttribute("id", "PanierBtnChariot");
-panierBtn1.innerHTML = "Retour achats";
-panierBtn1.addEventListener('click', function() {
-    window.location.href = "index.html";
-});
-
-panierBtn2 = document.createElement("button");
-panierBtn.appendChild(panierBtn2);
-panierBtn2.setAttribute("id", "PanierBtnCde");
-panierBtn2.innerHTML = "Commandez";
-panierBtn2.addEventListener("click", function() {
-    window.location.href = "commande.html";
-});
-
-panierBtn3 = document.createElement("button");
-panierBtn.appendChild(panierBtn3);
-panierBtn3.setAttribute("id", "PanierBtnVider");
-panierBtn3.innerHTML = "Vider panier";
-panierBtn3.addEventListener("click", function() {
-    window.location.reload();
-    localStorage.clear();
-});
