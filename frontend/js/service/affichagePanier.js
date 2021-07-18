@@ -54,7 +54,7 @@ function affichagePanier() {
         pb.addEventListener("click", (event) => {
             // Démarrage de la procédure d 'annulation unitaire d'1 commande, ou suppression.
             // Appel de l/'array et application de la formule splice"
-            // rec = récuperation test de validation
+            // Rec = récuperation de la longueur du panier av(avant) et ap(après) la supression de l'identifiant pour contrôler la fonction de supression.
             let nbreAvtRec = data.length;
             this.data.splice(i, 1);
             let nbreApsRec = data.length;
@@ -67,7 +67,6 @@ function affichagePanier() {
                 localStorage.setItem("panier", JSON.stringify(data));
                 window.location.reload();
                 localStorage.removeItem("product");
-
                 console.log("ok pour annulation");
             } else {
                 console.log(
@@ -80,7 +79,6 @@ function affichagePanier() {
         pa.appendChild(px);
         px.setAttribute("id", "caseTexteDroit");
         px.setAttribute("class", "viewver__case__caseTexteDroit");
-
         var py = document.createElement("div");
         px.appendChild(py);
         py.setAttribute("id", "texte-sup");

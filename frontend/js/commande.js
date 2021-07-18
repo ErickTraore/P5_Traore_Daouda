@@ -4,6 +4,19 @@ let testsubmitlastname = false;
 let testsubmitemail = false;
 let testsubmitadress = false;
 let testsubmitcity = false;
+let colorThreshold = 0;
+
+function changeColor(val) {
+    var color = "green";
+
+    if (val > 30 && val < 60) {
+        color = "yellow";
+    } else if (val >= 60) {
+        color = "red";
+    }
+
+    validText.style.color = color;
+}
 
 if (veriform()) {
     document.getElementById("submit-btn").removeAttribute("disabled");
@@ -11,31 +24,7 @@ if (veriform()) {
     document.getElementById("submit-btn").setAttribute("disabled", false);
 }
 
-////////////////////////////////////////-CODE/CITY-
-function getCityValidation() {
-    return document.getElementById("city-validation");
-}
-document.getElementById("city").addEventListener("input", function(e) {
-    if (/^[0-9]{5,5}$/.test(e.target.value)) {
-        getCityValidation().innerText = "City valide";
-        testsubmit = true;
-        // testVerifcity();
-        testVerif();
-    } else {
-        getCityValidation().innerText = "City_invalide";
-        testsubmit = false;
-        // testVerifcty();
-        testVerif();
-    }
-});
 
-function testVerifcity() {
-    if (testsubmit) {
-        document.getElementById("submit-btn").removeAttribute("disabled");
-    } else {
-        document.getElementById("submit-btn").setAttribute("disabled", false);
-    }
-}
 
 ////////////////////////////////////////-FIRSTNAME-
 
@@ -46,14 +35,22 @@ document.getElementById("firstname").addEventListener("input", function(e) {
     if (/^[a-zA-Z]{3,15}$/.test(e.target.value)) {
         getfirstnameValidation().innerText = "Nom valide";
         testsubmitfirstname = true;
+        colorThreshold = 10;
         testVerif();
         // testVeriffirstname();
     } else {
-        getfirstnameValidation().innerText = "Nom_invalide";
+        getfirstnameValidation().innerText = "Nom invalide";
         testsubmitfirstname = false;
+        colorThreshold = 70;
         // testVeriffirstname();
         testVerif();
     }
+    validText = getfirstnameValidation();
+
+    changeColor();
+
+    changeColor(colorThreshold);
+
 });
 
 function testVeriffirstname() {
@@ -63,25 +60,29 @@ function testVeriffirstname() {
         document.getElementById("submit-btn").setAttribute("disabled", false);
     }
 }
-
 ////////////////////////////////////////-LASTNAME-
-
 function getLastnameValidation() {
     return document.getElementById("lastname-validation");
 }
-
 document.getElementById("lastname").addEventListener("input", function(e) {
     if (/^[a-zA-Z]{3,15}$/.test(e.target.value)) {
         getLastnameValidation().innerText = "Prénom valide";
         testsubmitlastname = true;
+        colorThreshold = 10;
         // testVeriflastname();
         testVerif();
     } else {
-        getLastnameValidation().innerText = "Prénom_invalide";
+        getLastnameValidation().innerText = "Prénom invalide";
         testsubmitlastname = false;
+        colorThreshold = 70;
         // testVeriflastname();
         testVerif();
     }
+    validText = getLastnameValidation();
+
+    changeColor();
+
+    changeColor(colorThreshold);
 });
 
 function testVeriflastname() {
@@ -92,6 +93,77 @@ function testVeriflastname() {
     }
 }
 
+
+
+////////////////////////////////////////-ADRESS-
+
+function getAdressValidation() {
+    return document.getElementById("adress-validation");
+}
+
+document.getElementById("adress").addEventListener("input", function(e) {
+    if (
+        /^([0-9]{1,3}(([,. ]?){1}[a-zA-Zàâäéèêëïîôöùûüç' ]+))$/.test(e.target.value)
+    ) {
+        getAdressValidation().innerText = "adresse valide";
+        testsubmitadress = true;
+        colorThreshold = 10;
+        // testVeriftel();
+        testVerif();
+    } else {
+        getAdressValidation().innerText = "Adresse invalide";
+        testsubmitadress = false;
+        colorThreshold = 70;
+        // testVeriftel();
+        testVerif();
+    }
+    validText = getAdressValidation();
+
+    changeColor();
+
+    changeColor(colorThreshold);
+});
+
+function testVeriftel() {
+    if (testsubmitadress) {
+        document.getElementById("submit-btn").removeAttribute("disabled");
+    } else {
+        document.getElementById("submit-btn").setAttribute("disabled", false);
+    }
+}
+////////////////////////////////////////-CODE/CITY-
+function getCityValidation() {
+    return document.getElementById("city-validation");
+}
+document.getElementById("city").addEventListener("input", function(e) {
+    if (/^[0-9]{5,5}$/.test(e.target.value)) {
+        getCityValidation().innerText = "City valide";
+        testsubmit = true;
+        colorThreshold = 10;
+        // testVerifcity();
+        testVerif();
+    } else {
+        getCityValidation().innerText = "City invalide";
+        testsubmit = false;
+        colorThreshold = 70;
+        // testVerifcty();
+        testVerif();
+    }
+    validText = getCityValidation();
+
+    changeColor();
+
+    changeColor(colorThreshold);
+
+});
+
+function testVerifcity() {
+    if (testsubmit) {
+        document.getElementById("submit-btn").removeAttribute("disabled");
+    } else {
+        document.getElementById("submit-btn").setAttribute("disabled", false);
+    }
+}
 ////////////////////////////////////////-EMAIL-
 
 function getEmailValidation() {
@@ -106,13 +178,20 @@ document.getElementById("email").addEventListener("input", function(e) {
     ) {
         getEmailValidation().innerText = "Email valide";
         testsubmitemail = true;
+        colorThreshold = 10;
         testVerif();
     } else {
-        getEmailValidation().innerText = "Email_invalide";
+        getEmailValidation().innerText = "Email invalide";
         testsubmitemail = false;
+        colorThreshold = 70;
         // testVerifemail();
         testVerif();
     }
+    validText = getEmailValidation();
+
+    changeColor();
+
+    changeColor(colorThreshold);
 });
 
 function testVerifemail() {
@@ -122,37 +201,7 @@ function testVerifemail() {
         document.getElementById("submit-btn").setAttribute("disabled", false);
     }
 }
-
-////////////////////////////////////////-ADRESS-
-
-function getAdressValidation() {
-    return document.getElementById("adress-validation");
-}
-
-document.getElementById("adress").addEventListener("input", function(e) {
-    if (
-        /^([0-9]{1,3}(([,. ]?){1}[a-zA-Zàâäéèêëïîôöùûüç' ]+))$/.test(e.target.value)
-    ) {
-        getAdressValidation().innerText = "adresse valide";
-        testsubmitadress = true;
-        // testVeriftel();
-        testVerif();
-    } else {
-        getAdressValidation().innerText = "Adresse_invalide";
-        testsubmitadress = false;
-        // testVeriftel();
-        testVerif();
-    }
-});
-
-function testVeriftel() {
-    if (testsubmitadress) {
-        document.getElementById("submit-btn").removeAttribute("disabled");
-    } else {
-        document.getElementById("submit-btn").setAttribute("disabled", false);
-    }
-}
-///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 function veriform() {
     if (
         testsubmit &&
@@ -177,7 +226,6 @@ function testVerif() {
 async function send(ev) {
     ev.preventDefault();
     //Création de l 'objet contact
-    alert("je suis un Yankee un");
     let contact = {
         firstName: document.getElementById("firstname").value,
         lastName: document.getElementById("lastname").value,
@@ -202,7 +250,6 @@ async function send(ev) {
     };
     console.log(result.contact);
     console.log(result.products);
-    alert("je suis un Yankee trois");
     fetch("http://localhost:3000/api/cameras/order/", {
             method: "POST",
             headers: {
@@ -221,6 +268,8 @@ async function send(ev) {
             localStorage.setItem("merci", JSON.stringify(value));
             window.location.href = "merci.html";
         });
+    localStorage.removeItem("panier");
+    localStorage.removeItem("product");
 
 }
 

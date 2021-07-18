@@ -1,4 +1,12 @@
-﻿if (typeof product === "undefined") {
+﻿function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+if (typeof product === "undefined") {
     var product = JSON.parse(localStorage.getItem("product"));
 }
 if (typeof panier === "undefined") {
@@ -16,7 +24,6 @@ function ajoutezPanier() {
 }
 
 if (product === null && panier === null) {
-    alert("produit vide et panier vide, donc retour à l'index.");
     localStorage.removeItem("product");
     localStorage.removeItem("panier");
     localStorage.removeItem("data");
