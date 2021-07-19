@@ -16,7 +16,7 @@ td {
 
 .topnav {
   overflow: hidden;
-  background-color: #333; }
+  background-color: black; }
 
 .topnav a {
   float: left;
@@ -28,11 +28,11 @@ td {
   font-size: 17px; }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: black;
   color: black; }
 
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: black;
   color: white; }
 
 .topnav .icon {
@@ -116,8 +116,8 @@ td {
     height: auto;
     display: flex;
     margin: 20px 0px;
-    border: 5px solid #75756f;
     padding: 5px 5px;
+    border: 5px solid #214d73;
     object-fit: cover;
     border-radius: 20px 0px 0px 20px;
     -webkit-border-radius: 20px 0px 0px 20px;
@@ -152,8 +152,8 @@ td {
     justify-content: center;
     align-items: center;
     margin: 20px 0px;
-    border: 5px solid #75756f;
-    background-color: #e7e7d4;
+    border: 5px solid #4a4a4a;
+    background-color: #ecece8;
     border-radius: 0px 20px 20px 0px; }
     @media only screen and (max-width: 420px) {
       .articles a {
@@ -174,7 +174,6 @@ td {
         max-width: 800px;
         font-size: 3rem; } }
     .articles a:hover {
-      border: 5px solid green;
       transform: scale(0.9);
       -webkit-transform: scale(0.9);
       -moz-transform: scale(0.9);
@@ -239,7 +238,6 @@ td {
     max-width: 230px;
     display: flex;
     background-color: #e6dede;
-    margin-top: -0x;
     align-self: center; }
   .output__myObjectif {
     width: 80%;
@@ -275,7 +273,7 @@ td {
     align-self: center;
     text-align: center;
     background: white;
-    color: black #fff;
+    color: black;
     background-color: #8ee78e;
     flex-wrap: nowrap; }
 
@@ -390,7 +388,7 @@ td {
 
 .p2left {
   align-self: center;
-  color: blue; }
+  color: #214d73; }
 
 .footer {
   max-width: 100%;

@@ -8,7 +8,7 @@
     <link type="text/css" rel="stylesheet" href="public/css/style.css">
     <script defer src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Document-Commande</title>
+    <title>Document-Commande-orinoco</title>
 </head>
 
 <body>
@@ -32,37 +32,22 @@
 
     <div class="cde">
         <form id="form" class="cde__form">
-            <p>
-                <label>Nom : <input type="text" name="firstname" id="firstname"/></label><br />
-                <div class="cde__form__result" id="firstname-validation"></div>
-            </p>
-            <p>
-                <label>Prénom : <input type="text" name="lastname" id="lastname" /></label><br />
-                <div class="cde__form__result" id="lastname-validation"></div>
-            </p>
-            <p>
-                <label>Adress : <input type="adress" name="adress" id="adress" /></label>
-                <div class="cde__form__result" id="adress-validation"></div>
-            </p>
-
-            <p>
-                <label>City : <input type="text" name="city" id="city"  /></label><br />
-                <div class="cde__form__result" id="city-validation"></div>
-            </p>
-            <p>
-                <label>Email : <input type="email" name="email" id="email"/></label>
-                <div class="cde__form__result" id="email-validation"></div>
-            </p>
-
-            <p>
-                <input type="submit" value="Envoyez" id="submit-btn" />
-            </p>
-
+            <label>Nom : <input type="text" name="firstname" id="firstname"/></label><br />
+            <div class="cde__form__result" id="firstname-validation"></div>
+            <label>Prénom : <input type="text" name="lastname" id="lastname"/></label><br />
+            <div class="cde__form__result" id="lastname-validation"></div>
+            <label>Adress : <input type="text" name="adress" id="adress"/></label>
+            <div class="cde__form__result" id="adress-validation"></div>
+            <label>City : <input type="text" name="city" id="city"/></label><br />
+            <div class="cde__form__result" id="city-validation"></div>
+            <label>Email : <input type="email" name="email" id="email"/></label>
+            <div class="cde__form__result" id="email-validation"></div>
+            <input type="submit" value="Envoyez" id="submit-btn" />
         </form>
         <div id="formAlert"></div>
     </div>
 
-    <script type=" text/javascript " src="js/commande.js "></script>
+    <script src="js/commande.js"></script>
 </body>
 
 </html>

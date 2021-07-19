@@ -24,6 +24,7 @@ function getAllProducts() {
                 var img = document.createElement("IMG");
                 img.src = data[i].imageUrl;
                 img.classList.add("articles__image");
+                img.setAttribute("alt", "img_" + i);
                 p.appendChild(img);
 
                 var e = document.createElement("a");

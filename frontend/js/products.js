@@ -29,6 +29,7 @@ function getOneProducts() {
             var img = document.createElement("IMG");
             img.src = data.imageUrl;
             img.classList.add("output__image");
+            img.setAttribute("alt", "camera");
             p.appendChild(img);
 
             var e = document.createElement("div");

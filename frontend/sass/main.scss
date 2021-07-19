@@ -12,7 +12,7 @@ td {
 
 .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: black;
 }
 
 .topnav a {
@@ -26,12 +26,12 @@ td {
 }
 
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: black;
     color: black;
 }
 
 .topnav a.active {
-    background-color: #04AA6D;
+    background-color: black;
     color: white;
 }
 
@@ -130,12 +130,11 @@ td {
     flex-wrap: wrap;
     &__image {
         width: 45%;
-        // max-width: 900px;
         height: auto;
         display: flex;
         margin: 20px 0px;
-        border: 5px solid rgb(117, 117, 111);
         padding: 5px 5px;
+        border: 5px solid rgb(33, 77, 115);
         object-fit: cover;
         border-radius: 20px 0px 0px 20px;
         -webkit-border-radius: 20px 0px 0px 20px;
@@ -172,8 +171,8 @@ td {
         justify-content: center;
         align-items: center;
         margin: 20px 0px;
-        border: 5px solid rgb(117, 117, 111);
-        background-color: rgb(231, 231, 212);
+        border: 5px solid rgb(74, 74, 74);
+        background-color: rgb(236, 236, 232);
         border-radius: 0px 20px 20px 0px;
         @include phone {
             width: 70%;
@@ -194,7 +193,7 @@ td {
             font-size: 3rem;
         }
         &:hover {
-            border: 5px solid green;
+            // border: 5px solid rgb(33, 77, 115);
             transform: scale(0.90);
             -webkit-transform: scale(0.90);
             -moz-transform: scale(0.90);
@@ -269,7 +268,6 @@ td {
         max-width: 230px;
         display: flex;
         background-color: rgb(230, 222, 222);
-        margin-top: -0x;
         align-self: center;
     }
     &__myObjectif {
@@ -309,7 +307,7 @@ td {
         align-self: center;
         text-align: center;
         background: white;
-        color: black#fff;
+        color: black;
         background-color: rgb(142, 231, 142);
         flex-wrap: nowrap;
     }
@@ -443,7 +441,7 @@ td {
 
 .p2left {
     align-self: center;
-    color: blue;
+    color: rgb(33, 77, 115);
 }
 
 .footer {
