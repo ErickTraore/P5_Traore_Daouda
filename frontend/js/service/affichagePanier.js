@@ -1,4 +1,12 @@
-﻿// Affichage panier avec suppression de produit
+﻿class Articles {
+    constructor(nom, qte, prix_unit, lentille, imgSrc) {
+        this.nom = nom;
+        this.qte = qte;
+        this.prix_unit = prix_unit;
+        this.lentille = lentille;
+        this.imgSrc = imgSrc;
+    }
+} // Affichage panier avec suppression de produit
 function affichagePanier() {
     if (panier === null) {
         localStorage.removeItem("panier");
@@ -13,15 +21,6 @@ function affichagePanier() {
     pe.setAttribute("id", "case");
     pe.setAttribute("class", "viewver");
     // 3 Création d'une class Article pour fluidifier la récupération de plusieurs articles du panier dans la boucle for.
-    class Articles {
-        constructor(nom, qte, prix_unit, lentille, imgSrc) {
-            this.nom = nom;
-            this.qte = qte;
-            this.prix_unit = prix_unit;
-            this.lentille = lentille;
-            this.imgSrc = imgSrc;
-        }
-    }
     for (let i = 0; i < data.length; i++) {
         let article = new Articles(
             data[i].nom,
@@ -74,7 +73,6 @@ function affichagePanier() {
                 );
             }
         });
-
         var px = document.createElement("div");
         pa.appendChild(px);
         px.setAttribute("id", "caseTexteDroit");

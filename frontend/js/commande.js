@@ -222,10 +222,8 @@ function testVerif() {
     }
 }
 //////////////////////////////////////////////////
-
-async function send(ev) {
-    ev.preventDefault();
-    //Création de l 'objet contact
+//Création de l 'objet contact
+function createContact() {
     let contact = {
         firstName: document.getElementById("firstname").value,
         lastName: document.getElementById("lastname").value,
@@ -233,23 +231,26 @@ async function send(ev) {
         city: document.getElementById("city").value,
         email: document.getElementById("email").value,
     };
+}
+//Création du l'array products
+function createProducts() {
 
-    panier = JSON.parse(localStorage.getItem("panier"));
-    await console.log(panier.length);
-    await console.log(panier);
-    //Création du l'array products
     let products = [];
     for (var i = 0; i < panier.length; i++) {
         products.push(panier[i]._id);
     }
     console.log(products);
-    //Création du l'array products
+}
+async function send(ev) {
+    ev.preventDefault();
+    createContact();
+    panier = JSON.parse(localStorage.getItem("panier"));
+    createProducts();
     result = {
         contact,
         products
     };
-    console.log(result.contact);
-    console.log(result.products);
+
     fetch("http://localhost:3000/api/cameras/order/", {
             method: "POST",
             headers: {
@@ -264,13 +265,10 @@ async function send(ev) {
             }
         })
         .then(function(value) {
-            console.log(value);
             localStorage.setItem("merci", JSON.stringify(value));
             window.location.href = "merci.html";
         });
     localStorage.removeItem("panier");
     localStorage.removeItem("product");
-
 }
-
 form.onsubmit = send;

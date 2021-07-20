@@ -43,7 +43,7 @@ function getAllProducts() {
             }
         })
         .catch(function(err) {
-            //Une erreur est survenue
+            console.log(err);
         });
 }
 getAllProducts();
