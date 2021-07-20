@@ -5,6 +5,7 @@ let testsubmitemail = false;
 let testsubmitadress = false;
 let testsubmitcity = false;
 let colorThreshold = 0;
+let contact;
 
 function changeColor(val) {
     var color = "green";
@@ -24,10 +25,7 @@ if (veriform()) {
     document.getElementById("submit-btn").setAttribute("disabled", false);
 }
 
-
-
 ////////////////////////////////////////-FIRSTNAME-
-
 function getfirstnameValidation() {
     return document.getElementById("firstname-validation");
 }
@@ -46,11 +44,8 @@ document.getElementById("firstname").addEventListener("input", function(e) {
         testVerif();
     }
     validText = getfirstnameValidation();
-
     changeColor();
-
     changeColor(colorThreshold);
-
 });
 
 function testVeriffirstname() {
@@ -92,8 +87,6 @@ function testVeriflastname() {
         document.getElementById("submit-btn").setAttribute("disabled", false);
     }
 }
-
-
 
 ////////////////////////////////////////-ADRESS-
 
@@ -154,7 +147,6 @@ document.getElementById("city").addEventListener("input", function(e) {
     changeColor();
 
     changeColor(colorThreshold);
-
 });
 
 function testVerifcity() {
@@ -222,8 +214,9 @@ function testVerif() {
     }
 }
 //////////////////////////////////////////////////
-//Création de l 'objet contact
-function createContact() {
+
+async function send(ev) {
+    ev.preventDefault();
     let contact = {
         firstName: document.getElementById("firstname").value,
         lastName: document.getElementById("lastname").value,
@@ -231,24 +224,15 @@ function createContact() {
         city: document.getElementById("city").value,
         email: document.getElementById("email").value,
     };
-}
-//Création du l'array products
-function createProducts() {
-
+    panier = JSON.parse(localStorage.getItem("panier"));
     let products = [];
     for (var i = 0; i < panier.length; i++) {
         products.push(panier[i]._id);
     }
     console.log(products);
-}
-async function send(ev) {
-    ev.preventDefault();
-    createContact();
-    panier = JSON.parse(localStorage.getItem("panier"));
-    createProducts();
-    result = {
+    result = await {
         contact,
-        products
+        products,
     };
 
     fetch("http://localhost:3000/api/cameras/order/", {
