@@ -100,7 +100,8 @@ function affichagePanier() {
         pi.setAttribute("class", "viewver__case__caseTexteDroit__inf");
 
         var e = document.createElement("div");
-        e.innerHTML = "P.u:" + " " + data[i].prix_unit;
+        e.innerHTML = "P.u:" + " " + data[i].prix_unit+
+        " " +"€";
         pi.appendChild(e);
         e.setAttribute("id", "prix");
         e.setAttribute("class", "viewver__case__caseTexteDroit__inf__price");
@@ -112,7 +113,8 @@ function affichagePanier() {
         e.setAttribute("class", "viewver__case__caseTexteDroit__inf__qte");
 
         var e = document.createElement("div");
-        e.innerHTML = "s/tot:" + " " + tot;
+        e.innerHTML = "s/tot:" + " " + tot +
+        " " +"€";
         pi.appendChild(e);
         e.setAttribute("id", "sTotal");
         e.setAttribute("class", "viewver__case__caseTexteDroit__inf__sTotal");
@@ -131,7 +133,8 @@ function affichagePanier() {
     for (i = 0; i < data.length; i++) {
         panierTotal += data[i].sous_total;
     }
-    totalbtn.innerHTML = "TOTAL:" + " " + panierTotal;
+    totalbtn.innerHTML = "TOTAL:" + " " + panierTotal+
+    " " +"€";
     // Création des boutons pour le menu panier
     panierBtn = document.createElement("div");
     p0.appendChild(panierBtn);

@@ -63,7 +63,8 @@ function editPanier(data, p) {
         " <br> " +
         "Prix:" +
         " " +
-        data.price / 100;
+        data.price / 100 +
+        " " +"€"
     p.appendChild(e);
 
     var creax0 = document.createElement("p");
